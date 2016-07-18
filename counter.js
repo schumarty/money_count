@@ -1,10 +1,29 @@
+var currencyArr = [
+	{
+		name: "Pennies",
+		value: .01
+	},
+	{
+		name: "Nickels",
+		value: .05
+	},
+	{
+		name: "Dimes",
+		value: .1
+	},
+	{
+		name: "Quarters",
+		value: .25
+	}
+];
+
 sumMoney = function() {
 	var monies = $(".money");
 	var total = 0;
 	for (var i = 0; i < monies.length; i++) {
 		var element = $(monies[i]);
-		var value = $(element.children('.value')).val();
-		var amount = $(element.children('.amount')).val();
+		var value = element.data("value");
+		var amount = $(element.children('input')).val();
 		total += value * amount;
 	}
 		
@@ -38,3 +57,10 @@ makeCurrency = function(name, value) {
 
 	return(newDiv);
 }
+
+$(document).ready(function () {
+	for (var i = 0; i < currencyArr.length; i++) {
+		$("#currencies").append(makeCurrency(
+			currencyArr[i].name, currencyArr[i].value));
+	}
+});
