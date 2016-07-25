@@ -56,7 +56,8 @@ makeCurrency = function(name, value) {
 
 	var newInput = document.createElement("input");
 	newInput.id = newId;
-	newInput.setAttribute("pattern", "[0-9]*");
+	newInput.setAttribute("type", "number");
+	newInput.setAttribute("min", "0");
 
 	var newDiv = document.createElement("div");
 	newDiv.className = "money";
@@ -92,6 +93,14 @@ var currencyArr = [
 	{
 		name: "$5 Bills",
 		value: 5
+	},
+	{
+		name: "$10 Bills",
+		value: 10
+	},
+	{
+		name: "$20 Bills",
+		value: 20
 	}
 ];
 

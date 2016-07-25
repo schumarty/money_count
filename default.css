@@ -1,0 +1,55 @@
+* {
+	box-sizing: border-box;
+}
+html {
+	font-size = 62.5%;
+}
+body {
+	margin: 0;
+	text-align: center;
+}
+h1 {
+	text-align: center;
+}
+label {
+	text-align: left;
+	display: inline-block;
+	width: 50%;
+}
+input {
+	width: 4em;
+}
+#currencies, #money {
+	display: inline-block;
+}
+#currencies {
+	width: 300px;
+	margin-left: 10px;
+	margin-right: 10px;
+	margin-bottom: 10px;
+}
+#total {
+	text-align: center;
+}
+button {
+	border: none;
+	font-size: 1em;
+	padding: .5em 1em;
+	background-color: lightgray;
+}
+button:hover {
+	background-color: gray;
+}
+
+@media (min-width: 620px) {
+	#currencies {
+		width: 620px;
+		column-count: 2;
+	}
+}
+@media (min-width: 940px) {
+	#currencies {
+		width: 940px;
+		column-count: 3;
+	}
+}
