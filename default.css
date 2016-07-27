@@ -11,15 +11,21 @@ body {
 h1 {
 	text-align: center;
 }
+.money {
+	overflow: hidden;
+	margin-bottom: .5em;
+	border: 1px solid black;
+}
 label {
 	text-align: left;
-	display: inline-block;
+	float: left;
 	width: 50%;
 }
 input {
+	float: left;
 	width: 4em;
 }
-#currencies, #money {
+#currencies {
 	display: inline-block;
 }
 #currencies {
@@ -27,6 +33,9 @@ input {
 	margin-left: 10px;
 	margin-right: 10px;
 	margin-bottom: 10px;
+	-webkit-column-gap: 0px;
+	-moz-column-gap: 0px;
+	column-gap: 0px;
 }
 #total {
 	text-align: center;
@@ -43,13 +52,18 @@ button:hover {
 
 @media (min-width: 620px) {
 	#currencies {
-		width: 620px;
+		width: 600px;
+		-webkit-column-count: 2;
+		-moz-column-count: 2;
 		column-count: 2;
+		-moz-column-gap: 1px;
 	}
 }
-@media (min-width: 940px) {
+@media (min-width: 920px) {
 	#currencies {
-		width: 940px;
+		width: 900px;
+		-webkit-column-count: 3;
+		-moz-column-count: 3;
 		column-count: 3;
 	}
 }

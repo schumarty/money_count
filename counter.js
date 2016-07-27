@@ -101,6 +101,30 @@ var currencyArr = [
 	{
 		name: "$20 Bills",
 		value: 20
+	},
+	{
+		name: "$50 Bills",
+		value: 50
+	},
+	{
+		name: "$100 Bills",
+		value: 100
+	},
+	{
+		name: "Roll of Pennies",
+		value: .5
+	},
+	{
+		name: "Roll of Nickels",
+		value: 2
+	},
+	{
+		name: "Roll of Dimes",
+		value: 5
+	},
+	{
+		name: "Roll of Quarters",
+		value: 10
 	}
 ];
 
