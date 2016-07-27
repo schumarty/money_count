@@ -1,11 +1,11 @@
 sumMoney = function() {
 	var error = false;
-	var monies = $(".money");
+	var monies = document.getElementsByClassName("money");
 	var total = 0;
 	for (var i = 0; i < monies.length; i++) {
-		var element = $(monies[i]);
-		var value = element.data("value");
-		var amount = $(element.children('input')).val();
+		inputNode = monies[i].getElementsByTagName("input")[0];
+		var value = currencyData[inputNode.id];
+		var amount = inputNode.value;
 		// Interpret empty inputs as 0
 		if (amount === "") {
 			amount = 0;
@@ -15,18 +15,21 @@ sumMoney = function() {
 		}
 		total += value * amount;
 	}
+
+	var totalDiv = document.getElementById("totalMoney");
 	if (error) {
-		$("#totalMoney").html("<strong>Error:</strong> use only positive whole numbers");
+		totalDiv.innerHTML = "<strong>Error:</strong> use only positive whole numbers";
 	} else {
-		$("#totalMoney").html("$" + total.toFixed(2));
+		totalDiv.innerHTML = "$" + total.toFixed(2);
 	}
 }
 
 clearInputs = function() {
-	$("input").each(function() {
-		$(this).val("");
-	});
-	$("#totalMoney").html("");
+	var allInputs = document.getElementsByTagName("input");
+	for (var i = 0; i < allInputs.length; i++) {
+		allInputs[i].value = "";
+	}
+	document.getElementById("totalMoney").innerHTML = "";
 }
 
 // Copied from a Stack Overflow post
@@ -64,10 +67,12 @@ makeCurrency = function(name, value) {
 	newDiv.appendChild(newLabel);
 	newDiv.appendChild(newInput);
 
-	$(newDiv).data("value", value);
+	currencyData[newId] = value;
 
 	return(newDiv);
 }
+
+var currencyData = {};
 
 var currencyArr = [
 	{
@@ -128,9 +133,8 @@ var currencyArr = [
 	}
 ];
 
-$(document).ready(function () {
-	for (var i = 0; i < currencyArr.length; i++) {
-		$("#currencies").append(makeCurrency(
-			currencyArr[i].name, currencyArr[i].value));
-	}
-});
+// Populate document with currency inputs etc.
+for (var i = 0; i < currencyArr.length; i++) {
+	document.getElementById("currencies").appendChild(
+		makeCurrency(currencyArr[i].name, currencyArr[i].value));
+}
