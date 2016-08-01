@@ -10,7 +10,7 @@ sumMoney = function() {
 		if (amount === "") {
 			amount = 0;
 		}
-		if (!isInt(amount) || amount < 0){
+		if (!inputNode.validity.valid){
 			error = true;
 		}
 		total += value * amount;
@@ -32,26 +32,10 @@ clearInputs = function() {
 	document.getElementById("totalMoney").innerHTML = "";
 }
 
-// Copied from a Stack Overflow post
-// http://stackoverflow.com/questions/14636536/how-to-check-if-a-variable-is-an-integer-in-javascript
-isInt = function(value) {
-	if (isNaN(value)) {
-		return false;
-	}
-	var x = parseFloat(value);
-	return (x | 0) === x;
-}
-
-// Function to generate unique IDs
 var idNum = 0;
-generateId = function() {
-	var idName = "currency-" + idNum;
-	idNum++;
-	return(idName);
-}
 
 makeCurrency = function(name, value) {
-	var newId = generateId();
+	var newId = "currency-" + idNum++;
 
 	var newLabel = document.createElement("label");
 	newLabel.setAttribute("for", newId);
