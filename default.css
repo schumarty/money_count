@@ -1,67 +1,97 @@
 * {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
 	box-sizing: border-box;
 }
 html {
-	font-size = 62.5%;
+	font-size: 62.5%;
 }
 body {
+	background-color: #F5F5DC;
 	margin: 0;
 	text-align: center;
 }
 h1 {
+	background-color: #634F48;
+	padding: .5em;
+	margin-top: 0;
+	color: #fff;
+	font-size: 3rem;
+	font-family: serif;
 	text-align: center;
 }
 .money {
-	overflow: hidden;
-	margin-bottom: .5em;
-	border: 1px solid black;
+	display: inline-block;
+	width: 90%;
+	text-align: left;
+	margin: .5em;
 }
 label {
+	color: #444;
+	font-size: 1.6rem;
 	text-align: left;
-	float: left;
+	display: inline-block;
 	width: 50%;
 }
 input {
-	float: left;
-	width: 4em;
-}
-#currencies {
+	font-size: 1.6rem;
+	margin-top: .2em;
+	margin-bottom: .2em;
+	margin-left: .5em;
+	vertical-align: top;
 	display: inline-block;
+	width: 5em;
+	border: 1px solid #634F48;
 }
-#currencies {
-	width: 300px;
+#content {
+	display: inline-block;
+	background-color: #fff;
+	border: 1px solid #634F48;
+	border-radius: 4px;
 	margin-left: 10px;
 	margin-right: 10px;
 	margin-bottom: 10px;
+	width: 300px;
+}
+#currencies {
+	display: inline-block;
+	margin-bottom: 1em;
 	-webkit-column-gap: 0px;
 	-moz-column-gap: 0px;
 	column-gap: 0px;
 }
 #total {
+	display: inline-block;
+	font-size: 1.6rem;
 	text-align: center;
 }
+#totalMoney {
+	height: 1em;
+}
 button {
+	display: inline-block;
 	border: none;
-	font-size: 1em;
+	font-size: 2rem;
 	padding: .5em 1em;
-	background-color: lightgray;
+	color: #fff;
+	background-color: #634F48;
+	border-radius: 4px;
 }
 button:hover {
 	background-color: gray;
 }
 
-@media (min-width: 620px) {
+@media (min-width: 630px) {
+	#content{ width: 600px; }
 	#currencies {
-		width: 600px;
 		-webkit-column-count: 2;
 		-moz-column-count: 2;
 		column-count: 2;
-		-moz-column-gap: 1px;
 	}
 }
-@media (min-width: 920px) {
+@media (min-width: 930px) {
+	#content{ width: 900px; }
 	#currencies {
-		width: 900px;
 		-webkit-column-count: 3;
 		-moz-column-count: 3;
 		column-count: 3;
