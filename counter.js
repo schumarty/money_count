@@ -1,7 +1,15 @@
 var sumMoney = function() {
 	var error = false;
-	var monies = document.getElementsByClassName("money");
 	var total = 0;
+
+  $(".money").each(function() {
+    var inputNode = $(this).find("input");
+    var value = inputNode.attr("data-currency-value");
+    var amount = inputNode.val();
+
+    console.log(value * amount);
+  });
+
 	for (var i = 0; i < monies.length; i++) {
 		var inputNode = monies[i].getElementsByTagName("input")[0];
 		var value = currencyData[inputNode.id];
@@ -43,6 +51,7 @@ var makeCurrency = function(name, value) {
 
 	var newInput = document.createElement("input");
 	newInput.id = newId;
+  newInput.setAttribute("data-currency-value", value);
 	newInput.setAttribute("type", "number");
 	newInput.setAttribute("min", "0");
 
@@ -51,12 +60,8 @@ var makeCurrency = function(name, value) {
 	newDiv.appendChild(newLabel);
 	newDiv.appendChild(newInput);
 
-	currencyData[newId] = value;
-
 	return(newDiv);
 };
-
-var currencyData = {};
 
 var currencyArr = [
 	{
@@ -65,7 +70,7 @@ var currencyArr = [
 	},
 	{
 		name: "Nickels",
-		value: 0.5
+		value: 0.05
 	},
 	{
 		name: "Dimes",
