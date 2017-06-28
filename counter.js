@@ -1,5 +1,4 @@
 var sumMoney = function() {
-	var error = false;
 	var total = 0;
 
   $(".money").each(function() {
@@ -7,29 +6,16 @@ var sumMoney = function() {
     var value = inputNode.attr("data-currency-value");
     var amount = inputNode.val();
 
-    console.log(value * amount);
+    total += value * amount;
   });
 
-	for (var i = 0; i < monies.length; i++) {
-		var inputNode = monies[i].getElementsByTagName("input")[0];
-		var value = currencyData[inputNode.id];
-		var amount = inputNode.value;
-		// Interpret empty inputs as 0
-		if (amount === "") {
-			amount = 0;
-		}
-		if (!inputNode.validity.valid){
-			error = true;
-		}
-		total += value * amount;
-	}
+  return total;
+}
 
+var updateTotal = function() {
+  var total = sumMoney();
 	var totalDiv = document.getElementById("totalMoney");
-	if (error) {
-		totalDiv.innerHTML = "<strong>Error:</strong> use only positive whole numbers";
-	} else {
-		totalDiv.innerHTML = "$" + total.toFixed(2);
-	}
+  totalDiv.innerHTML = "$" + total.toFixed(2);
 };
 
 var clearInputs = function() {
