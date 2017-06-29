@@ -1,63 +1,64 @@
+"use strict";
 /*******************************************************************************
 * Globally defined content affecting what shows up on the page
 *******************************************************************************/
 var currencyArr = [
-	{
-		name: "Pennies",
-		value: 0.01
-	},
-	{
-		name: "Nickels",
-		value: 0.05
-	},
-	{
-		name: "Dimes",
-		value: 0.1
-	},
-	{
-		name: "Quarters",
-		value: 0.25
-	},
-	{
-		name: "$1 Bills",
-		value: 1
-	},
-	{
-		name: "$5 Bills",
-		value: 5
-	},
-	{
-		name: "$10 Bills",
-		value: 10
-	},
-	{
-		name: "$20 Bills",
-		value: 20
-	},
-	{
-		name: "$50 Bills",
-		value: 50
-	},
-	{
-		name: "$100 Bills",
-		value: 100
-	},
-	{
-		name: "Roll of Pennies",
-		value: .5
-	},
-	{
-		name: "Roll of Nickels",
-		value: 2
-	},
-	{
-		name: "Roll of Dimes",
-		value: 5
-	},
-	{
-		name: "Roll of Quarters",
-		value: 10
-	}
+  {
+    name: "Pennies",
+    value: 0.01
+  },
+  {
+    name: "Nickels",
+    value: 0.05
+  },
+  {
+    name: "Dimes",
+    value: 0.1
+  },
+  {
+    name: "Quarters",
+    value: 0.25
+  },
+  {
+    name: "$1 Bills",
+    value: 1
+  },
+  {
+    name: "$5 Bills",
+    value: 5
+  },
+  {
+    name: "$10 Bills",
+    value: 10
+  },
+  {
+    name: "$20 Bills",
+    value: 20
+  },
+  {
+    name: "$50 Bills",
+    value: 50
+  },
+  {
+    name: "$100 Bills",
+    value: 100
+  },
+  {
+    name: "Roll of Pennies",
+    value: 0.5
+  },
+  {
+    name: "Roll of Nickels",
+    value: 2
+  },
+  {
+    name: "Roll of Dimes",
+    value: 5
+  },
+  {
+    name: "Roll of Quarters",
+    value: 10
+  }
 ];
 
 /*******************************************************************************
@@ -70,7 +71,7 @@ var onLoad = function() {
         makeCurrency(currency.name, currency.value));
   });
   $("#currencies").append($currencies);
-}
+};
 
 /*******************************************************************************
 * Fuctions that are to be used by buttons on the page
@@ -89,7 +90,7 @@ var clearInputs = function() {
 * Various helper functions
 *******************************************************************************/
 var sumMoney = function() {
-	var total = 0;
+  var total = 0;
 
   $(".money").each(function() {
     var $inputNode = $(this).find("input");
@@ -100,11 +101,11 @@ var sumMoney = function() {
   });
 
   return total;
-}
+};
 
 var idNum = 0;
 var makeCurrency = function(name, value) {
-	var newId = "currency-" + idNum++;
+  var newId = "currency-" + idNum++;
 
   var $label = $("<label>", {"for": newId}).html(name);
   var $input = $("<input>",
@@ -113,7 +114,7 @@ var makeCurrency = function(name, value) {
   var $moneyDiv = $("<div>", {"class": "money"});
   $moneyDiv.append($label, $input);
 
-	return($moneyDiv);
+  return($moneyDiv);
 };
 
 /*******************************************************************************
