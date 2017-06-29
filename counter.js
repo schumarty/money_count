@@ -1,40 +1,6 @@
-var sumMoney = function() {
-	var total = 0;
-
-  $(".money").each(function() {
-    var $inputNode = $(this).find("input");
-    var value = $inputNode.attr("data-currency-value");
-    var amount = $inputNode.val();
-
-    total += value * amount;
-  });
-
-  return total;
-}
-
-var updateTotal = function() {
-  var total = sumMoney();
-  $("#totalMoney").html("$" + total.toFixed(2));
-};
-
-var clearInputs = function() {
-  $("input").val("");
-  $("#totalMoney").html("");
-};
-
-var idNum = 0;
-
-var makeCurrency = function(name, value) {
-	var newId = "currency-" + idNum++;
-
-  var $label = $("<label>", {"for": newId}).html(name);
-  var $input = $("<input>", {"id": newId, "type": "number", min: "0", "data-currency-value": value});
-  var $moneyDiv = $("<div>", {"class": "money"});
-  $moneyDiv.append($label, $input);
-
-	return($moneyDiv);
-};
-
+/*******************************************************************************
+* Globally defined content affecting what shows up on the page
+*******************************************************************************/
 var currencyArr = [
 	{
 		name: "Pennies",
@@ -94,9 +60,63 @@ var currencyArr = [
 	}
 ];
 
-// Populate document with currency inputs etc.
-var $currencies = [];
-currencyArr.forEach(function(currency) {
-  $currencies.push(makeCurrency(currency.name, currency.value));
-});
-$("#currencies").append($currencies);
+/*******************************************************************************
+* Code that needs to execute whenever the page is loaded/refreshed
+*******************************************************************************/
+var onLoad = function() {
+  var $currencies = [];
+  currencyArr.forEach(function(currency) {
+    $currencies.push(
+        makeCurrency(currency.name, currency.value));
+  });
+  $("#currencies").append($currencies);
+}
+
+/*******************************************************************************
+* Fuctions that are to be used by buttons on the page
+*******************************************************************************/
+var updateTotal = function() {
+  var total = sumMoney();
+  $("#totalMoney").html("$" + total.toFixed(2));
+};
+
+var clearInputs = function() {
+  $("input").val("");
+  $("#totalMoney").html("");
+};
+
+/*******************************************************************************
+* Various helper functions
+*******************************************************************************/
+var sumMoney = function() {
+	var total = 0;
+
+  $(".money").each(function() {
+    var $inputNode = $(this).find("input");
+    var value = $inputNode.attr("data-currency-value");
+    var amount = $inputNode.val();
+
+    total += value * amount;
+  });
+
+  return total;
+}
+
+var idNum = 0;
+var makeCurrency = function(name, value) {
+	var newId = "currency-" + idNum++;
+
+  var $label = $("<label>", {"for": newId}).html(name);
+  var $input = $("<input>",
+      {"id": newId, "type": "number", "min": "0", "data-currency-value": value}
+  );
+  var $moneyDiv = $("<div>", {"class": "money"});
+  $moneyDiv.append($label, $input);
+
+	return($moneyDiv);
+};
+
+/*******************************************************************************
+* Execute onLoad()
+*******************************************************************************/
+onLoad();
