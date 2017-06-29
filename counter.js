@@ -2,9 +2,9 @@ var sumMoney = function() {
 	var total = 0;
 
   $(".money").each(function() {
-    var inputNode = $(this).find("input");
-    var value = inputNode.attr("data-currency-value");
-    var amount = inputNode.val();
+    var $inputNode = $(this).find("input");
+    var value = $inputNode.attr("data-currency-value");
+    var amount = $inputNode.val();
 
     total += value * amount;
   });
@@ -14,16 +14,12 @@ var sumMoney = function() {
 
 var updateTotal = function() {
   var total = sumMoney();
-	var totalDiv = document.getElementById("totalMoney");
-  totalDiv.innerHTML = "$" + total.toFixed(2);
+  $("#totalMoney").html("$" + total.toFixed(2));
 };
 
 var clearInputs = function() {
-	var allInputs = document.getElementsByTagName("input");
-	for (var i = 0; i < allInputs.length; i++) {
-		allInputs[i].value = "";
-	}
-	document.getElementById("totalMoney").innerHTML = "";
+  $("input").val("");
+  $("#totalMoney").html("");
 };
 
 var idNum = 0;
@@ -31,28 +27,18 @@ var idNum = 0;
 var makeCurrency = function(name, value) {
 	var newId = "currency-" + idNum++;
 
-	var newLabel = document.createElement("label");
-	newLabel.setAttribute("for", newId);
-	newLabel.innerHTML = name;
+  var $label = $("<label>", {"for": newId}).html(name);
+  var $input = $("<input>", {"id": newId, "type": "number", min: "0", "data-currency-value": value});
+  var $moneyDiv = $("<div>", {"class": "money"});
+  $moneyDiv.append($label, $input);
 
-	var newInput = document.createElement("input");
-	newInput.id = newId;
-  newInput.setAttribute("data-currency-value", value);
-	newInput.setAttribute("type", "number");
-	newInput.setAttribute("min", "0");
-
-	var newDiv = document.createElement("div");
-	newDiv.className = "money";
-	newDiv.appendChild(newLabel);
-	newDiv.appendChild(newInput);
-
-	return(newDiv);
+	return($moneyDiv);
 };
 
 var currencyArr = [
 	{
 		name: "Pennies",
-		value: 0.1
+		value: 0.01
 	},
 	{
 		name: "Nickels",
@@ -109,7 +95,8 @@ var currencyArr = [
 ];
 
 // Populate document with currency inputs etc.
-for (var i = 0; i < currencyArr.length; i++) {
-	document.getElementById("currencies").appendChild(
-		makeCurrency(currencyArr[i].name, currencyArr[i].value));
-}
+var $currencies = [];
+currencyArr.forEach(function(currency) {
+  $currencies.push(makeCurrency(currency.name, currency.value));
+});
+$("#currencies").append($currencies);
