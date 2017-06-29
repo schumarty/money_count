@@ -1,4 +1,5 @@
 "use strict";
+
 /*******************************************************************************
 * Globally defined content affecting what shows up on the page
 *******************************************************************************/
@@ -111,13 +112,12 @@ var makeCurrency = function(name, value) {
   var $input = $("<input>",
       {"id": newId, "type": "number", "min": "0", "data-currency-value": value}
   );
-  var $moneyDiv = $("<div>", {"class": "money"});
-  $moneyDiv.append($label, $input);
+  var $moneyDiv = $("<div>", {"class": "money"}).append($label, $input);
 
   return($moneyDiv);
 };
 
 /*******************************************************************************
-* Execute onLoad()
+* Execute onLoad() whenever page is loaded or refreshed
 *******************************************************************************/
 onLoad();
