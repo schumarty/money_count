@@ -84,11 +84,20 @@ const makeCurrency = function(name, value) {
   const newId = `currency-${idNum}`;
   idNum += idNum;
 
-  const $label = $("<label>", {"for": newId}).html(name);
-  const $input = $("<input>",
-      {"id": newId, "type": "number", "min": "0", "data-currency-value": value}
-  );
-  const $moneyDiv = $("<div>", {"class": "money"}).append($label, $input);
+  const $label = $("<label>", {
+    "for": newId,
+  }).html(name);
+
+  const $input = $("<input>", {
+    "id": newId,
+    "type": "number",
+    "min": "0",
+    "data-currency-value": value,
+  });
+
+  const $moneyDiv = $("<div>", {
+    "class": "money form-group",
+  }).append($label, $input);
 
   return $moneyDiv;
 };
