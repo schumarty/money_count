@@ -82,14 +82,16 @@ const sumMoney = function() {
 let idNum = 0;
 const makeCurrency = function(name, value) {
   const newId = `currency-${idNum}`;
-  idNum += idNum;
+  idNum += 1;
 
   const $label = $("<label>", {
+    "class": "currency-label",
     "for": newId,
   }).html(name);
 
   const $input = $("<input>", {
     "id": newId,
+    "class": "form-control",
     "type": "number",
     "min": "0",
     "data-currency-value": value,
@@ -112,7 +114,7 @@ const updateTotal = function() {
 
 const clearInputs = function() {
   $("input").val("");
-  $("#totalMoney").html("");
+  $("#totalMoney").html("$0.00");
 };
 
 /*******************************************************************************

@@ -1,0 +1,17 @@
+body {
+  background-color: #eee;
+}
+
+.money-panel > .panel-heading {
+  background-color: #3cb371;
+  color: white;
+}
+
+.btn-total {
+  background-color: #2cb371;
+  color: white;
+}
+
+.currency-label {
+  font-size: 1.6rem;
+}
