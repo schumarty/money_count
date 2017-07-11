@@ -15,3 +15,11 @@ body {
 .currency-label {
   font-size: 1.6rem;
 }
+
+.money-panel {
+  max-width: 500px;
+}
+
+.copyright-footer {
+  margin-bottom: 0;
+}
