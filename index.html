@@ -21,7 +21,20 @@
   </head>
   <body>
     <nav class="navbar navbar-inverse header-nav">
-      <p class="navbar-brand">Money Counter</p>
+      <div class="container">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">Money Counter</a>
+        </div> <!-- navbar-header -->
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="#"><span class="glyphicon glyphicon-question-sign"></span> Help</a></li>
+          <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-info-sign"></span> About</a>
+            <ul class=dropdown-menu>
+              <li><a href="#">testing out what a longer strill of text looks like in this context</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div> <!-- container -->
     </nav>  <!-- header-nav -->
 
     <div class="container">
@@ -43,7 +56,7 @@
     </div> <!-- container -->
 
     <nav class="navbar navbar-inverse navbar-bottom copyright-footer">
-      <div class="container-responsive">
+      <div class="container">
         <p class="navbar-text">&copy; 2017-<script type="text/javascript">document.write(new Date().getFullYear()); </script> Martin Schumacher</p>
       </div>
     </nav>
