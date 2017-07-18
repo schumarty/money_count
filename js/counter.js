@@ -62,6 +62,11 @@ const currencyArr = [
   },
 ];
 
+const moneyDivClasses = "money form-group";
+const labelClasses = "currency-label";
+const inputClasses = "form-control";
+const amountClasses = "currency-label pull-right";
+
 /*******************************************************************************
 * Various helper functions
 *******************************************************************************/
@@ -84,22 +89,41 @@ const makeCurrency = function(name, value) {
   const newId = `currency-${idNum}`;
   idNum += 1;
 
-  const $label = $("<label>", {
-    "class": "currency-label",
-    "for": newId,
-  }).html(name);
+  const $labelDiv = $("<div>", {
+    "class": "col-sm-3",
+  }).append($("<label>", {
+      "class": labelClasses,
+      "for": newId,
+    }).html(name)
+  );
 
-  const $input = $("<input>", {
-    "id": newId,
-    "class": "form-control",
-    "type": "number",
-    "min": "0",
-    "data-currency-value": value,
-  });
+  const $inputDiv = $("<div>", {
+    "class": "col-xs-9 col-sm-6",
+  }).append($("<div>", {"class": "input-group"}).append(
+      $("<span>", {"class": "input-group-addon"}).html("&times;"),
+      $("<input>", {
+        "id": newId,
+        "class": inputClasses,
+        "placeholder": "0",
+        "type": "number",
+        "min": "0",
+        "data-currency-value": value,
+      })
+    )
+  );
+
+  const $amountDiv = $("<div>", {
+    "class": "col-xs-3 col-sm-3",
+  }).append($("<p>", {
+      "class": amountClasses,
+    }).html("$0.00")
+  );
 
   const $moneyDiv = $("<div>", {
-    "class": "money form-group",
-  }).append($label, $input);
+    "class": moneyDivClasses,
+  }).append($("<div>", {"class": "row"})
+    .append($labelDiv, $inputDiv, $amountDiv)
+  );
 
   return $moneyDiv;
 };

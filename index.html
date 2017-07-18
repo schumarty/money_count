@@ -7,6 +7,14 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>Money Counter</title>
 
+    <!-- Favicon info generated at realfavicongenerator.net -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+    <meta name="theme-color" content="#ffffff">
+
     <!-- Bootstrap -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
     <!!-- Overide bootsrap defaults with site specific stylings -->
@@ -24,57 +32,63 @@
       <div class="container">
         <div class="navbar-header">
           <a class="navbar-brand" href="#">Money Counter</a>
-        </div> <!-- navbar-header -->
+        </div> <!-- .navbar-header -->
         <ul class="nav navbar-nav navbar-right">
           <li><a data-toggle="modal" data-target="#help-modal" href="#"><span class="glyphicon glyphicon-question-sign"></span> Help</a></li>
           <li><a data-toggle="modal" data-target="#about-modal" href="#"><span class="glyphicon glyphicon-info-sign"></span> About</a>
         </ul>
-      </div> <!-- container -->
-    </nav>  <!-- header-nav -->
+      </div> <!-- .container -->
+    </nav>  <!-- .header-nav -->
 
     <div class="container">
       <div class="panel panel-default money-panel center-block">
         <div class="panel-heading">
           <h2>Enter Amounts Here</h2>
-        </div> <!-- panel-heading -->
+        </div> <!-- .panel-heading -->
         <div class="panel-body currency-card">
           <form class="form">
             <div id="currencies"></div>
+            <div class="text-center">
+              <button type="button" class="btn btn-default btn-total"  onclick="updateTotal()">Total</button>
+              <button type="button" class="btn btn-default btn-clear"  onclick="clearInputs()">Clear</button>
+            </div>
           </form>
           <div id="total" class="text-center">
-            <button type="button" class="btn btn-default btn-total"  onclick="updateTotal()">Total</button>
-            <button type="button" class="btn btn-default btn-clear"  onclick="clearInputs()">Clear</button>
             <h3 id="totalMoney">$0.00</h3>
           </div> <!-- #total -->
         </div> <!-- .currency-card -->
       </div> <!-- .panel -->
-    </div> <!-- container -->
+    </div> <!-- .container -->
 
     <div id="about-modal" class="modal fade" role="dialog">
       <div class="modal-dialog modal-sm">
         <div class="modal-content">
           <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <button type="button" class="close" data-dismiss="modal">
+              <span class="glyphicon glyphicon-remove"></span>
+            </button>
             <h2 class="modal-title">About</h2>
-          </div> <!-- modal-header -->
+          </div> <!-- .modal-header -->
           <div class="modal-body">
             <p>
               This is a simple money counting tool programmed in JavaScript with some help from the JQuery library.
               The interface was built using the Bootstrap 3 framework.
               Icons are from the Glyphicon collection included in Bootstrap which can also be found at <a target="_blank" href="http://glyphicons.com/">glyphicons.com</a>.
             </p>
-          </div> <!-- modal-body -->
-        </div> <!-- modal-content" -->
-      </div> <!-- modal-dialog -->
-    </div> <!-- info-modal -->
+          </div> <!-- .modal-body -->
+        </div> <!-- .modal-content" -->
+      </div> <!-- .modal-dialog -->
+    </div> <!-- #info-modal -->
 
     <div id="help-modal" class="modal fade" role="dialog">
       <div class="modal-dialog modal-sm">
         <div class="modal-content">
           <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <button type="button" class="close" data-dismiss="modal">
+              <span class="glyphicon glyphicon-remove"></span>
+            </button>
             <h2 class="modal-title">Help</h2>
-          </div> <!-- modal-header -->
+          </div> <!-- .modal-header -->
           <div class="modal-body">
             <p>
               To use this application enter the quantity of each type of currency you possess beneath its respective name.
@@ -84,10 +98,10 @@
             <p>
               If you are have difficulty getting this page to function as expected please ensure that you are using an up-to-date, modern web browser with scripting enabled.
             </p>
-          </div> <!-- modal-body -->
-        </div> <!-- modal-content" -->
-      </div> <!-- modal-dialog -->
-    </div> <!-- info-modal -->
+          </div> <!-- .modal-body -->
+        </div> <!-- .modal-content" -->
+      </div> <!-- .modal-dialog -->
+    </div> <!-- #help-modal -->
 
     <nav class="navbar navbar-inverse navbar-bottom copyright-footer">
       <div class="container">
