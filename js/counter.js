@@ -62,11 +62,6 @@ const currencyArr = [
   },
 ];
 
-const moneyDivClasses = "money form-group";
-const labelClasses = "currency-label";
-const inputClasses = "form-control";
-const amountClasses = "currency-label pull-right";
-
 /*******************************************************************************
 * Various helper functions
 *******************************************************************************/
@@ -123,6 +118,13 @@ const clearInputs = function() {
   $("input").val("");
   $("#totalMoney").html("$0.00");
 };
+
+/*******************************************************************************
+* Add event handlers
+*******************************************************************************/
+$(".btn-total").click(updateTotal);
+
+$(".btn-clear").click(clearInputs);
 
 /*******************************************************************************
 * Code that needs to execute whenever the page is loaded/refreshed
