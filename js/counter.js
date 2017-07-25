@@ -66,17 +66,22 @@ const currencyArr = [
 * Various helper functions
 *******************************************************************************/
 const sumMoney = function() {
-  let total = 0;
+  let grandTotal = 0;
 
   $(".money").each(function() {
     const $inputNode = $(this).find("input");
     const value = $inputNode.attr("data-currency-value");
     const amount = $inputNode.val();
+    const currencyTotal = value * amount;
 
-    total += value * amount;
+    const currencyId = $inputNode.attr("id");
+    const currencyTotalId = `#total-${currencyId}`;
+    $(currencyTotalId).html(`$${currencyTotal.toFixed(2)}`);
+
+    grandTotal += currencyTotal;
   });
 
-  return total;
+  return grandTotal;
 };
 
 let idNum = 0;
@@ -97,7 +102,7 @@ const makeCurrency = function(name, value) {
           </div>
         </div>
         <div class="col-xs-3 col-sm-3">
-          <p class="currency-label pull-right">$0.00</p>
+          <p id="total-${newId}" class="currency-total pull-right">$0.00</p>
         </div>
       </div>
     </div>
@@ -116,15 +121,8 @@ const updateTotal = function() {
 
 const clearInputs = function() {
   $("input").val("");
-  $("#totalMoney").html("$0.00");
+  $("#totalMoney, .currency-total").html("$0.00");
 };
-
-/*******************************************************************************
-* Add event handlers
-*******************************************************************************/
-$(".btn-total").click(updateTotal);
-
-$(".btn-clear").click(clearInputs);
 
 /*******************************************************************************
 * Code that needs to execute whenever the page is loaded/refreshed
@@ -136,6 +134,10 @@ const onLoad = function() {
         makeCurrency(currency.name, currency.value));
   });
   $("#currencies").append($currencies);
+
+// Event Handlers
+  $("input").change(updateTotal);
+  $(".btn-clear").click(clearInputs);
 };
 
 /*******************************************************************************

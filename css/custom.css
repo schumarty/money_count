@@ -7,12 +7,12 @@ body {
   color: white;
 }
 
-.btn-total {
+.btn-clear {
   background-color: #2cb371;
   color: white;
 }
 
-.currency-label {
+.currency-label, .currency-total {
   font-size: 1.6rem;
 }
 
