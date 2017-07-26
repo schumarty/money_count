@@ -45,19 +45,19 @@ const currencyArr = [
     value: 100,
   },
   {
-    name: "Roll of Pennies",
+    name: "Rolls of Pennies",
     value: 0.5,
   },
   {
-    name: "Roll of Nickels",
+    name: "Rolls of Nickels",
     value: 2,
   },
   {
-    name: "Roll of Dimes",
+    name: "Rolls of Dimes",
     value: 5,
   },
   {
-    name: "Roll of Quarters",
+    name: "Rolls of Quarters",
     value: 10,
   },
 ];
