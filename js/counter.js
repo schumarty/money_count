@@ -65,6 +65,10 @@ const currencyArr = [
 /*******************************************************************************
 * Various helper functions
 *******************************************************************************/
+const formatMoneyOut = function(money) {
+  return `$${money.toFixed(2)}`;
+};
+
 const sumMoney = function() {
   let grandTotal = 0;
 
@@ -76,7 +80,7 @@ const sumMoney = function() {
 
     const currencyId = $inputNode.attr("id");
     const currencyTotalId = `#total-${currencyId}`;
-    $(currencyTotalId).html(`$${currencyTotal.toFixed(2)}`);
+    $(currencyTotalId).html(formatMoneyOut(currencyTotal));
 
     grandTotal += currencyTotal;
   });
@@ -102,7 +106,7 @@ const makeCurrency = function(name, value) {
           </div>
         </div>
         <div class="col-xs-3 col-sm-3">
-          <p id="total-${newId}" class="currency-total pull-right">$0.00</p>
+          <p id="total-${newId}" class="currency-total pull-right"></p>
         </div>
       </div>
     </div>
@@ -116,12 +120,12 @@ const makeCurrency = function(name, value) {
 *******************************************************************************/
 const updateTotal = function() {
   const total = sumMoney();
-  $("#totalMoney").html(`$${total.toFixed(2)}`);
+  $("#totalMoney").html(formatMoneyOut(total));
 };
 
 const clearInputs = function() {
   $("input").val("");
-  $("#totalMoney, .currency-total").html("$0.00");
+  $("#totalMoney, .currency-total").html(formatMoneyOut(0));
 };
 
 /*******************************************************************************
@@ -138,6 +142,9 @@ const onLoad = function() {
 // Event Handlers
   $("input").change(updateTotal);
   $(".btn-clear").click(clearInputs);
+
+// Sets all totals to zero with the correct formatting
+  clearInputs();
 };
 
 /*******************************************************************************
