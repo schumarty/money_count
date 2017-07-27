@@ -69,23 +69,23 @@ const formatMoneyOut = function(money) {
   return `$${money.toFixed(2)}`;
 };
 
+const calcTotal = function($inputNode) {
+  const value = $inputNode.attr("data-currency-value");
+  const amount = $inputNode.val();
+  const currencyTotal = value * amount;
+
+  return currencyTotal;
+};
+
 const sumMoney = function() {
-  let grandTotal = 0;
+  let total = 0;
 
-  $(".money").each(function() {
-    const $inputNode = $(this).find("input");
-    const value = $inputNode.attr("data-currency-value");
-    const amount = $inputNode.val();
-    const currencyTotal = value * amount;
-
-    const currencyId = $inputNode.attr("id");
-    const currencyTotalId = `#total-${currencyId}`;
-    $(currencyTotalId).html(formatMoneyOut(currencyTotal));
-
-    grandTotal += currencyTotal;
+  $("input").each(function() {
+    const $inputNode = $(this);
+    total += calcTotal($inputNode);
   });
 
-  return grandTotal;
+  return total;
 };
 
 let idNum = 0;
@@ -116,9 +116,17 @@ const makeCurrency = function(name, value) {
 };
 
 /*******************************************************************************
-* Fuctions that are to be used by buttons on the page
+* Fuctions that are to be used by events on the page
 *******************************************************************************/
 const updateTotal = function() {
+// First calculate the changed element
+  const $inputNode = $(this);
+  const currencyTotal = calcTotal($inputNode);
+
+  const totalIdQuery = `#total-${$inputNode.attr("id")}`;
+  $(totalIdQuery).html(formatMoneyOut(currencyTotal));
+
+// Now calculate and sum all of the elements  
   const total = sumMoney();
   $("#totalMoney").html(formatMoneyOut(total));
 };
