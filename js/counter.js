@@ -126,7 +126,7 @@ const updateTotal = function() {
   const totalIdQuery = `#total-${$inputNode.attr("id")}`;
   $(totalIdQuery).html(formatMoneyOut(currencyTotal));
 
-// Now calculate and sum all of the elements  
+// Now calculate and sum all of the elements
   const total = sumMoney();
   $("#totalMoney").html(formatMoneyOut(total));
 };
