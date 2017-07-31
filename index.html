@@ -28,33 +28,32 @@
     <![endif]-->
   </head>
   <body>
-    <nav class="navbar navbar-inverse header-nav">
+    <div class="cst-topbar">
       <div class="container">
-        <div class="navbar-header">
-          <a class="navbar-brand" href="#">Money Counter</a>
-        </div> <!-- .navbar-header -->
-        <ul class="nav navbar-nav navbar-right">
-          <li><a data-toggle="modal" data-target="#help-modal" href="#"><span class="glyphicon glyphicon-question-sign"></span> Help</a></li>
-          <li><a data-toggle="modal" data-target="#about-modal" href="#"><span class="glyphicon glyphicon-info-sign"></span> About</a>
-        </ul>
+        <div class="row">
+          <div class="cst-topbar-info col-xs-4">
+            <a data-toggle="modal" data-target="#about-modal" href="#"><span class="glyphicon glyphicon-info-sign"></span><span class="hidden-xs"> About</span></a>
+            <a data-toggle="modal" data-target="#help-modal" href="#"><span class="glyphicon glyphicon-question-sign"></span><span class="hidden-xs"> Help</span></a>
+          </div> <!-- .cst-topbar-info -->
+          <div id="total" class="cst-topbar-total col-xs-4">
+            <p id="totalMoney" class="text-center"></p>
+          </div> <!-- #total.cst-topbar-total -->
+          <div class="cst-topbar-info col-xs-4 text-right">
+            <a class="btn-clear" href="#"><span class="glyphicon glyphicon-erase"></span><span class="hidden-xs"> Clear</span></a>
+          </div> <!-- .cst-topbar-buttonarea -->
+        </div> <!-- .row -->
       </div> <!-- .container -->
-    </nav>  <!-- .header-nav -->
+    </div>  <!-- .cst-topbar -->
 
     <div class="container">
       <div class="panel panel-default money-panel center-block">
         <div class="panel-heading">
-          <h2>Enter Amounts Here</h2>
+          <h3>Enter Amounts Here</h3>
         </div> <!-- .panel-heading -->
         <div class="panel-body currency-card">
           <form class="form">
             <div id="currencies"></div>
-            <div class="text-center">
-              <button type="button" class="btn btn-default btn-clear">Clear</button>
-            </div>
           </form>
-          <div id="total" class="text-center">
-            <h3 id="totalMoney"></h3>
-          </div> <!-- #total -->
         </div> <!-- .currency-card -->
       </div> <!-- .panel -->
     </div> <!-- .container -->

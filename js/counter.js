@@ -134,6 +134,9 @@ const updateTotal = function() {
 const clearInputs = function() {
   $("input").val("");
   $("#totalMoney, .currency-total").html(formatMoneyOut(0));
+
+// Prevents href action from happening
+  return false;
 };
 
 /*******************************************************************************
@@ -148,7 +151,7 @@ const onLoad = function() {
   $("#currencies").append($currencies);
 
 // Event Handlers
-  $("input").change(updateTotal);
+  $("input").on("input", updateTotal);
   $(".btn-clear").click(clearInputs);
 
 // Sets all totals to zero with the correct formatting
