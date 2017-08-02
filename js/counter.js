@@ -1,7 +1,7 @@
 "use strict";
 
 /*******************************************************************************
-* Globally defined content affecting what shows up on the page
+* Templates and other code that will be turned into HTML
 *******************************************************************************/
 const currencyArr = [
   {
@@ -62,6 +62,25 @@ const currencyArr = [
   },
 ];
 
+const moneyDivTemplate = ({id, name, value}) => `
+  <div class="money form-group">
+    <div class="row">
+      <div class="col-sm-3">
+        <label class="currency-label" for="${id}">${name}</label>
+      </div>
+      <div class="col-xs-9 col-sm-6">
+        <div class="input-group">
+          <span class="input-group-addon">&times;</span>
+          <input id="${id}" class="form-control" placeholder="0" type="number" min="0" data-currency-value="${value}">
+        </div>
+      </div>
+      <div class="col-xs-3 col-sm-3">
+        <p id="total-${id}" class="currency-total pull-right"></p>
+      </div>
+    </div>
+  </div>
+`;
+
 /*******************************************************************************
 * Various helper functions
 *******************************************************************************/
@@ -88,31 +107,16 @@ const sumMoney = function() {
   return total;
 };
 
-let idNum = 0;
+const generateIdNum = (function() {
+  let idNum = 0;
+  return () => idNum += 1;
+})();
+
 const makeCurrency = function(name, value) {
-  const newId = `currency-${idNum}`;
-  idNum += 1;
+  const newId = `currency-${generateIdNum()}`;
+  const moneyDivHtml = moneyDivTemplate({id: newId, name: name, value: value});
 
-  const moneyDivTemplateString = `
-    <div class="money form-group">
-      <div class="row">
-        <div class="col-sm-3">
-          <label class="currency-label" for="${newId}">${name}</label>
-        </div>
-        <div class="col-xs-9 col-sm-6">
-          <div class="input-group">
-            <span class="input-group-addon">&times;</span>
-            <input id="${newId}" class="form-control" placeholder="0" type="number" min="0" data-currency-value="${value}">
-          </div>
-        </div>
-        <div class="col-xs-3 col-sm-3">
-          <p id="total-${newId}" class="currency-total pull-right"></p>
-        </div>
-      </div>
-    </div>
-  `;
-
-  return $(moneyDivTemplateString);
+  return $(moneyDivHtml);
 };
 
 /*******************************************************************************
