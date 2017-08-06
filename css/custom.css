@@ -3,16 +3,25 @@ body {
   background-color: #eee;
 }
 
-.cst-topbar {
+.cst-bar {
+  font-size: 1.8rem;
+  color: #9d9d9d;
   display: block;
-  position: fixed;
-  top: 0;
-  right: 0;
-  left: 0;
   z-index: 10;
   min-height: 50px;
   padding-top: 10px;
   background-color: #222222;
+}
+
+.cst-topbar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+}
+
+.cst-bottombar {
+  margin-bottom: 0;
 }
 
 .cst-topbar-info > a {
@@ -42,8 +51,4 @@ body {
 
 .cst-money-panel {
   max-width: 500px;
-}
-
-.copyright-footer {
-  margin-bottom: 0;
 }
