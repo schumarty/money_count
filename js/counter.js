@@ -66,7 +66,7 @@ const moneyDivTemplate = ({id, name, value}) => `
   <div class="money form-group">
     <div class="row">
       <div class="col-sm-3">
-        <label class="currency-label" for="${id}">${name}</label>
+        <label class="cst-currency-label" for="${id}">${name}</label>
       </div>
       <div class="col-xs-9 col-sm-6">
         <div class="input-group">
@@ -75,7 +75,7 @@ const moneyDivTemplate = ({id, name, value}) => `
         </div>
       </div>
       <div class="col-xs-3 col-sm-3">
-        <p id="total-${id}" class="currency-total pull-right"></p>
+        <p id="total-${id}" class="cst-currency-total pull-right"></p>
       </div>
     </div>
   </div>
@@ -98,7 +98,6 @@ const calcTotal = function($inputNode) {
 
 const sumMoney = function() {
   let total = 0;
-
   $("input").each(function() {
     const $inputNode = $(this);
     total += calcTotal($inputNode);
@@ -137,7 +136,7 @@ const updateTotal = function() {
 
 const clearInputs = function() {
   $("input").val("");
-  $("#totalMoney, .currency-total").html(formatMoneyOut(0));
+  $("#totalMoney, .cst-currency-total").html(formatMoneyOut(0));
 
 // Prevents href action from happening
   return false;

@@ -30,17 +30,17 @@ body {
 .cst-topbar-buttonarea {
 }
 
-.money-panel > .panel-heading {
+.cst-money-panel > .panel-heading {
   background-color: #3cb371;
   color: white;
 }
 
 
-.currency-label, .currency-total {
+.cst-currency-label, .cst-currency-total {
   font-size: 1.6rem;
 }
 
-.money-panel {
+.cst-money-panel {
   max-width: 500px;
 }
 
