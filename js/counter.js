@@ -89,6 +89,9 @@ const formatMoneyOut = function(money) {
 };
 
 const calcTotal = function($inputNode) {
+  if ($inputNode.prop("validity").valid === false) {
+    return 0;
+  }
   const value = $inputNode.attr("data-currency-value");
   const amount = $inputNode.val();
   const currencyTotal = value * amount;
