@@ -159,6 +159,9 @@ const onLoad = function() {
 
 // Sets all totals to zero with the correct formatting
   clearInputs();
+
+// Set Current year for copyright info in the bottom bar
+  $(".cst-present-year").html(new Date().getFullYear());
 };
 
 /*******************************************************************************
