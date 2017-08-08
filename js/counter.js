@@ -125,8 +125,16 @@ const makeCurrency = function(name, value) {
 * Fuctions that are to be used by events on the page
 *******************************************************************************/
 const updateTotal = function() {
-// First calculate the changed element
   const $inputNode = $(this);
+
+// Indicate invalid inputs with the Bootstrap .has-error class
+  if ($inputNode.prop("validity").valid) {
+    $inputNode.parent().removeClass("has-error");
+  } else {
+    $inputNode.parent().addClass("has-error");
+  }
+
+// Calculate the changed element
   const currencyTotal = calcTotal($inputNode);
 
   const totalIdQuery = `#total-${$inputNode.attr("id")}`;
@@ -140,6 +148,7 @@ const updateTotal = function() {
 const clearInputs = function() {
   $("input").val("");
   $("#totalMoney, .cst-currency-total").html(formatMoneyOut(0));
+  $(".input-group").removeClass("has-error");
 
 // Prevents href action from happening
   return false;
