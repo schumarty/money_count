@@ -21,6 +21,7 @@ body {
 }
 
 .cst-bottombar {
+  font-size: 1.6rem;
   margin-bottom: 0;
 }
 
@@ -31,9 +32,9 @@ body {
 }
 
 .cst-topbar-total > p {
-  font-size: 1.8rem;
+  font-size: 2.2rem;
   font-weight: bold;
-  color: #9d9d9d;
+  color: white;
 }
 
 .cst-topbar-buttonarea {
@@ -50,5 +51,9 @@ body {
 }
 
 .cst-money-panel {
-  max-width: 500px;
+  max-width: 350px;
+}
+
+.cst-currency-total {
+  padding-top: 7px;
 }

@@ -63,31 +63,27 @@ const currencyArr = [
 ];
 
 const moneyDivTemplate = ({id, name, value}) => `
-  <div class="money form-group">
+  <div class="form-group">
+    <label class="cst-currency-label" for="${id}">${name}</label>
     <div class="row">
-      <div class="col-sm-3">
-        <label class="cst-currency-label" for="${id}">${name}</label>
-      </div>
-      <div class="col-xs-9 col-sm-6">
+      <div class="col-xs-8">
         <div class="input-group">
           <span class="input-group-addon">&times;</span>
           <input id="${id}" class="form-control" placeholder="0" type="number" min="0" data-currency-value="${value}">
         </div>
       </div>
-      <div class="col-xs-3 col-sm-3">
-        <p id="total-${id}" class="cst-currency-total pull-right"></p>
+      <div class="col-xs-4">
+        <p id="total-${id}" class="cst-currency-total control-label pull-right"></p>
       </div>
     </div>
   </div>
 `;
 
+const formatMoneyOut = (money) => `$${money.toFixed(2)}`;
+
 /*******************************************************************************
 * Various helper functions
 *******************************************************************************/
-const formatMoneyOut = function(money) {
-  return `$${money.toFixed(2)}`;
-};
-
 const calcTotal = function($inputNode) {
   if ($inputNode.prop("validity").valid === false) {
     return 0;
