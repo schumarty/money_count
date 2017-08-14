@@ -117,6 +117,21 @@ const makeCurrency = function(name, value) {
   return $(moneyDivHtml);
 };
 
+// This function has been mostly coppied from modal.js in the BS source code
+const measureScrollbar = function () {
+  const $body = $(document.body);
+
+  const scrollDiv = document.createElement('div');
+  scrollDiv.className = 'modal-scrollbar-measure';
+  $body.append(scrollDiv);
+
+  const scrollbarWidth = scrollDiv.offsetWidth - scrollDiv.clientWidth;
+
+  $body[0].removeChild(scrollDiv);
+
+  return scrollbarWidth;
+};
+
 /*******************************************************************************
 * Fuctions that are to be used by events on the page
 *******************************************************************************/
@@ -154,10 +169,10 @@ const clearInputs = function() {
 * Code that needs to execute whenever the page is loaded/refreshed
 *******************************************************************************/
 const onLoad = function() {
+// Populate the currency form
   const $currencies = [];
-  currencyArr.forEach(function(currency) {
-    $currencies.push(
-        makeCurrency(currency.name, currency.value));
+  currencyArr.forEach( (currency) => {
+    $currencies.push(makeCurrency(currency.name, currency.value));
   });
   $("#currencies").append($currencies);
 
@@ -165,10 +180,18 @@ const onLoad = function() {
   $("input").on("input", updateTotal);
   $(".btn-clear").click(clearInputs);
 
+// Bootstrap ignores fixed content when eliminating scrollbar for modal
+  $(document).on("show.bs.modal", () => {
+    $(".cst-topbar").css("margin-right", measureScrollbar());
+  });
+  $(document).on("hidden.bs.modal", () => {
+    $(".cst-topbar").css("margin-right", 0);
+  });
+
 // Sets all totals to zero with the correct formatting
   clearInputs();
 
-// Set Current year for copyright info in the bottom bar
+// Set current year for copyright info in the bottom bar
   $(".cst-present-year").html(new Date().getFullYear());
 };
 
